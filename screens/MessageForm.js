@@ -109,23 +109,25 @@ export default class MessageForm extends React.Component {
         </View>
         
         <View style={{position:'relative',top:0,left:0,marginTop:0,height:440,zIndex:0}}>
-          <ScrollView style={{borderColor:'#000000',borderWidth:1}}
+          <ScrollView style={{borderColor:'#000000',borderWidth:1,padding:5}}
                       ref={ref => this.scrollView = ref}
                       onContentSizeChange={(contentWidth, contentHeight)=>{        
                           this.scrollView.scrollToEnd({animated: true});
                       }}>
             <View>
               {this.state.displayedMessages.map((msgObj,key) => (
-                <Text style={{color:msgObj.msgColor}} key={key}> 
-                  <Text style={{color:'#ccc'}}>{moment(msgObj.date).format('MMMM Do YYYY, h:mm:ss a')}</Text>
-                  {': '+msgObj.msg}
-                </Text>
+                <View style={{backgroundColor:'#efffb5',borderRadius:10,padding:5,marginTop:4}}>
+                  <Text style={{color:msgObj.msgColor}} key={key}> 
+                    <Text style={{color:'#ccc'}}>{moment(msgObj.date).format('MMMM Do YYYY, h:mm:ss a')}</Text>
+                    {': '+msgObj.msg}
+                  </Text>
+                </View>
               ))}
             </View>
           </ScrollView>
         </View>
 
-        <KeyboardAvoidingView style={{position:'absolute',bottom:-110,right:0,left:0,backgroundColor:'#ffffff'}} 
+        <KeyboardAvoidingView style={{position:'absolute',bottom:-80,right:0,left:0,backgroundColor:'#ffffff'}} 
                               behavior="padding" 
                               enabled={true}>
           <ScrollView>
@@ -165,7 +167,7 @@ const styles = StyleSheet.create({
     marginTop:25
   },
   inputContainers:{
-    marginTop:30,
+    marginTop:10,
     borderBottomColor:'#000000',
     borderBottomWidth:1
   },
